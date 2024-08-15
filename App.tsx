@@ -29,7 +29,7 @@ export default function App() {
         <Button title='ADICIONAR TAREFA' onPress={handleAddTask}/>
       </View>
 
-      {state.tasks.map((task: any) => <Text>{task.name}</Text>)}
+      {state.tasks.map((task: any) => <Text style={styles.text}>{task.name}</Text>)}
 
     </View>
   );
@@ -54,5 +54,16 @@ const styles = StyleSheet.create({
     width: '80%',
     color: 'white',
     marginRight: 5
+  }, 
+  text: {
+    backgroundColor: 'white',
+    fontSize: 18,
+    width: '80%',
+    textAlign: 'center',
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 10,
+    marginTop: 10,
+    padding: 5
   }
 });
