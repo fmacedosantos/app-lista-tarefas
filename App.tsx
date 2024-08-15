@@ -28,6 +28,9 @@ export default function App() {
         onChangeText={text => setInputValue(text)}/>
         <Button title='ADICIONAR TAREFA' onPress={handleAddTask}/>
       </View>
+
+      {state.tasks.map((task: any) => <Text>{task.name}</Text>)}
+
     </View>
   );
 }
