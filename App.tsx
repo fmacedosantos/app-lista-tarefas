@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useReducer, useState } from 'react';
-import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const listener = (state: any, action: any) => {
   switch(action.type) {
@@ -22,7 +22,8 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView>
+      <View style={styles.container}>
       <View style={styles.inline}>
         <TextInput style={styles.enter} value={inputValue}
         onChangeText={text => setInputValue(text)}/>
@@ -32,6 +33,7 @@ export default function App() {
       {state.tasks.map((task: any) => <Text style={styles.text}>{task.name}</Text>)}
 
     </View>
+    </ScrollView>
   );
 }
 
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     width: '50%',
+    marginTop: 20
   },
   enter: {
     borderColor: 'white',
@@ -57,7 +60,7 @@ const styles = StyleSheet.create({
   }, 
   text: {
     backgroundColor: 'white',
-    fontSize: 18,
+    fontSize: 15,
     width: '80%',
     textAlign: 'center',
     borderWidth: 2,
