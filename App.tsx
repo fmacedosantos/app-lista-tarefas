@@ -1,15 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useState } from 'react';
+import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
-  const handleAddTask = () => {
+  const [inputValue, setInputValue] = useState('')
 
+  const handleAddTask = () => {
+    Alert.alert('TAREFA', `${inputValue} adicionada.`)
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.inline}>
-        <TextInput style={styles.enter}/>
+        <TextInput style={styles.enter} value={inputValue}
+        onChangeText={text => setInputValue(text)}/>
         <Button title='ADICIONAR TAREFA' onPress={handleAddTask}/>
       </View>
     </View>
