@@ -1,12 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+
+const listener = (state: any, action: any) => {
+  switch(action.type) {
+    case 'add-new-task':
+      return {
+        tasks: [...state.tasks, {name: action.inputValue, isDone: false}]
+      }
+    default:
+      break;
+  }
+}
 
 export default function App() {
   const [inputValue, setInputValue] = useState('')
+  const [state, dispatch] = useReducer(listener, {tasks: []})
 
   const handleAddTask = () => {
-    Alert.alert('TAREFA', `${inputValue} adicionada.`)
+    dispatch({type: 'add-new-task', inputValue})
   }
 
   return (
